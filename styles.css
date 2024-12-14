@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    color: #fff;
+    background: linear-gradient(45deg, #ff7f50, #ff1493);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+/* Background animation */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(45deg, #ff7f50, #ff1493);
+    }
+
+    25% {
+        background: linear-gradient(45deg, #ff1493, #1a75ff);
+    }
+
+    50% {
+        background: linear-gradient(45deg, #1a75ff, #8e44ad);
+    }
+
+    75% {
+        background: linear-gradient(45deg, #8e44ad, #ff7f50);
+    }
+
+    100% {
+        background: linear-gradient(45deg, #ff7f50, #ff1493);
+    }
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: containerAnimation 1s ease-in-out;
+}
+
+
+@keyframes containerAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+h2 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 20px;
+    animation: fadeInText 1s ease-out;
+}
+
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: #444;
+    border: 1px solid #ff1493;
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff1493;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: buttonHover 0.5s ease-out;
+}
+
+
+.submit:hover {
+    background-color: #ff7f50;
+    transform: scale(1.05);
+}
+
+
+@keyframes buttonHover {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+
+.signup-button {
+    background-color: #4CAF50;
+    animation: specialButtonAnimation 1.5s ease-in-out infinite;
+}
+
+.signup-button:hover {
+    background-color: #45a049;
+}
+
+
+@keyframes specialButtonAnimation {
+    0% {
+        transform: scale(1);
+        background-color: #4CAF50;
+    }
+
+    50% {
+        transform: scale(1.05);
+        background-color: #45a049;
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: #4CAF50;
+    }
+}
+
+
+a {
+    color: #ff1493;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+
+a:hover {
+    color: #ff7f50;
+}
+
+.icon {
+    font-size: 60px;
+    color: #ff1493;
+    margin-bottom: 20px;
+    animation: iconAnimation 1.5s ease-in-out infinite;
+}
+
+
+@keyframes iconAnimation {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+
+.message {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    animation: fadeInMessage 1s ease-out;
+}
+
+
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .icon {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .icon {
+        font-size: 40px;
+    }
+}

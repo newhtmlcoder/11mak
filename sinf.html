@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dars Jadvali</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #5b6e84, #97a5b2);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: backgroundAnimation 10s ease infinite;
+
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: slideUp 1s ease-out;
+
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        label {
+            font-size: 16px;
+            margin-right: 10px;
+            color: #444;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease;
+        }
+
+        select:hover {
+            background-color: #e0f7fa;
+
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            animation: fadeInTable 2s ease-out;
+
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #fafafa;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .icon {
+            font-size: 20px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        .back-btn {
+            background-color: #4CAF50;
+
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, #5b6e84, #97a5b2);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #3c4e70, #8099b6);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #5b6e84, #97a5b2);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInTable {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <button class="back-btn" onclick="window.location.href = 'index.html';">
+            <i class="fas fa-home"></i> Bosh sahifaga qaytish
+        </button>
+
+        <h1>9-11 Sinflar Dars Jadvali <i class="fas fa-calendar-alt icon"></i></h1>
+
+        <div class="form-group">
+            <label for="class-dropdown">Sinfni tanlang:</label>
+            <select id="class-dropdown">
+                <option value="" disabled selected>Sinfni tanlang</option>
+                <option value="9A">9-A Sinf</option>
+                <option value="9B">9-B Sinf</option>
+                <option value="9V">9-V Sinf</option>
+                <option value="10A">10-A Sinf</option>
+                <option value="10B">10-B Sinf</option>
+                <option value="11A">11-A Sinf</option>
+                <option value="11B">11-B Sinf</option>
+                <option value="11V">11-V Sinf</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="days-dropdown">Kunni tanlang:</label>
+            <select id="days-dropdown" disabled>
+                <option value="" disabled selected>Kunni tanlang</option>
+                <option value="Dushanba">Dushanba</option>
+                <option value="Seshanba">Seshanba</option>
+                <option value="Chorshanba">Chorshanba</option>
+                <option value="Payshanba">Payshanba</option>
+                <option value="Juma">Juma</option>
+                <option value="Shanba">Shanba</option>
+            </select>
+        </div>
+
+        <div id="timetable">
+            <h2>Dars Jadvali <i class="fas fa-table icon"></i></h2>
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Soat <i class="fas fa-clock icon"></i></th>
+                        <th>Fan <i class="fas fa-book-open icon"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const classDropdown = document.getElementById('class-dropdown');
+        const daysDropdown = document.getElementById('days-dropdown');
+        const timetableBody = document.getElementById('timetable-body');
+
+
+        const timetable = {
+            '9A': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '9B': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '9V': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '10A': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '10A': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '10B': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '11A': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '11V': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '11B': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            },
+            '11V': {
+                'Dushanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ],
+                'Seshanba': [
+                    ['08:00-08:45', 'Ingliz tili'],
+                    ['08:50-09:35', 'Fizika'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Kimyo']
+                ],
+                'Chorshanba': [
+                    ['08:00-08:45', 'Biologiya'],
+                    ['08:50-09:35', 'Tarix'],
+                    ['09:40-10:25', 'Adabiyot'],
+                    ['10:30-11:15', 'Geografiya']
+                ],
+                'Payshanba': [
+                    ['08:00-08:45', 'Kimyo'],
+                    ['08:50-09:35', 'Geografiya'],
+                    ['09:40-10:25', 'Ona tili'],
+                    ['10:30-11:15', 'Fizika']
+                ],
+                'Juma': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ingliz tili'],
+                    ['09:40-10:25', 'Geometriya'],
+                    ['10:30-11:15', 'Tabiatshunoslik']
+                ],
+                'Shanba': [
+                    ['08:00-08:45', 'Matematika'],
+                    ['08:50-09:35', 'Ona tili'],
+                    ['09:40-10:25', 'Tabiatshunoslik'],
+                    ['10:30-11:15', 'Ingliz tili']
+                ]
+            }
+        };
+
+
+        classDropdown.addEventListener('change', function () {
+            const selectedClass = classDropdown.value;
+            daysDropdown.disabled = !selectedClass;
+        });
+
+
+        daysDropdown.addEventListener('change', function () {
+            const selectedClass = classDropdown.value;
+            const selectedDay = daysDropdown.value;
+            const daySchedule = timetable[selectedClass][selectedDay];
+
+
+            timetableBody.innerHTML = '';
+            daySchedule.forEach(([time, subject]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${time}</td><td>${subject}</td>`;
+                timetableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+
+</html>

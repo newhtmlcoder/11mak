@@ -1,0 +1,174 @@
+/* Umumiy uslublar */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #42a5f5, #66bb6a, #ba68c8, #29b6f6);
+    background-size: 400% 400%;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    animation: gradientBg 10s infinite;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.5s ease-in-out;
+    color: #333;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #29b6f6;
+    text-transform: uppercase;
+  }
+  
+  /* Input maydoni */
+  .search-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 2px solid #42a5f5;
+    outline: none;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    background-color: #f1f1f1;
+    border-color: #29b6f6;
+    animation: inputFocus 0.5s forwards;
+  }
+  
+  /* Ikona */
+  .search-input i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #42a5f5;
+    font-size: 18px;
+  }
+  
+  .search-input:focus i {
+    color: #29b6f6;
+  }
+  
+  /* Bosh sahifaga qaytish tugmasi */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  #home-button {
+    background-color: #ff6347; 
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #home-button i {
+    margin-right: 10px;
+  }
+  
+  #home-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(66, 165, 245, 0.7);
+  }
+  
+  /* Natijalar ro'yxati */
+  .results-list {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+  
+  .results-list li {
+    padding: 10px;
+    background-color: rgba(102, 187, 106, 0.1);
+    margin-bottom: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .results-list li:hover {
+    background-color: rgba(66, 165, 245, 0.2);
+  }
+  
+  /* Animatsiyalar */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes inputFocus {
+    from {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    to {
+      background-color: #f1f1f1;
+    }
+  }
+  
+  @keyframes gradientBg {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+
+#clear-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+    background-color: #29b6f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clear-button:hover {
+    background-color: #0288d1;
+}
+  
